@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reservations - Wanne be Tabit</title>
+
+  <link rel="stylesheet" href="/styling_folder/dist/block.css">
+  <link rel="stylesheet" href="/styling_folder/dist/composition.css">
+  <link rel="stylesheet" href="/styling_folder/dist/expression.css">
+  <link rel="stylesheet" href="/styling_folder/dist/utility.css">
+  
+</head>
+<body>
+  <header>
+    <div class="header-grid">
+      <div class="left">
+        <a href="javascript:window.history.back();" class="exit-button">Back</a>
+      </div>
+      <div class="center">
+        <h1>Reservations</h1>
+      </div>
+      <div class="right">
+        <span class="placeholder">Back</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="reservation-form">
+      <form id="reservationForm">
+        <!-- Date picker -->
+        <label for="reservation-date">Date:</label>
+        <input type="date" id="reservation-date" name="reservation-date" required />
+
+        <!-- Time dropdown -->
+        <label for="reservation-time">Time:</label>
+        <select id="reservation-time" name="reservation-time" required>
+          <option value="">-- Select Time --</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+        </select>
+
+        <label for="guests">Number of Guests:</label>
+        <input type="number" id="guests" name="guests" min="1" required />
+
+        <!-- Seating radio group with button-like styling -->
+        <div class="radio-group">
+          <label>Seating Location:</label>
+          <div class="seating-option-group">
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="seating"
+                id="outside"
+                value="outside"
+                checked
+              />
+              <label for="outside">Outside</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="seating"
+                id="inside"
+                value="inside"
+              />
+              <label for="inside">Inside</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="seating"
+                id="bar"
+                value="bar"
+              />
+              <label for="bar">Bar</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table options for each seating location -->
+        <!-- Outside -->
+        <div id="tables-outside" class="table-options active">
+          <label>Choose a Table (Outside):</label>
+          <div class="table-option-group">
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="outside-table1"
+                value="outside-table1"
+                required
+              />
+              <label for="outside-table1">Table 1</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="outside-table2"
+                value="outside-table2"
+              />
+              <label for="outside-table2">Table 2</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="outside-table3"
+                value="outside-table3"
+              />
+              <label for="outside-table3">Table 3</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="outside-table4"
+                value="outside-table4"
+              />
+              <label for="outside-table4">Table 4</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inside -->
+        <div id="tables-inside" class="table-options">
+          <label>Choose a Table (Inside):</label>
+          <div class="table-option-group">
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="inside-table1"
+                value="inside-table1"
+                required
+              />
+              <label for="inside-table1">Table 1</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="inside-table2"
+                value="inside-table2"
+              />
+              <label for="inside-table2">Table 2</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="inside-table3"
+                value="inside-table3"
+              />
+              <label for="inside-table3">Table 3</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="inside-table4"
+                value="inside-table4"
+              />
+              <label for="inside-table4">Table 4</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bar -->
+        <div id="tables-bar" class="table-options">
+          <label>Choose a Table (Bar):</label>
+          <div class="table-option-group">
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="bar-table1"
+                value="bar-table1"
+                required
+              />
+              <label for="bar-table1">Table 1</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="bar-table2"
+                value="bar-table2"
+              />
+              <label for="bar-table2">Table 2</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="bar-table3"
+                value="bar-table3"
+              />
+              <label for="bar-table3">Table 3</label>
+            </div>
+            <div class="radio-btn">
+              <input
+                type="radio"
+                name="table"
+                id="bar-table4"
+                value="bar-table4"
+              />
+              <label for="bar-table4">Table 4</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit">Reserve</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/Models/dist/Reservations.js"></script>
+</body>
+</html>
