@@ -16,5 +16,35 @@ export class UserController {
         UserController.users = userArray.filter((user: User) => !user.isAdmin);
         UserController.admins = userArray.filter((user: User) => user.isAdmin);
     }
+    static getUsers(): User[]{
+        return UserController.users;
+    }
+    static getAdmins(): User[]{
+        return UserController.admins;
+    }
+    static getUserByEmail(email: string): User | undefined{
+        return [...UserController.users, ...UserController.admins].find((user: User) => user.email === email);
+    }
+    static addNewUser(name: string, email: string, password: string, isAdmin: boolean): void{
+        if(!UserController.getUserByEmail(email)){
+            const newUser = new User(name, email, password, isAdmin);
+            if(isAdmin){
+                UserController.admins.push(newUser);
+            }else{
+                UserController.users.push(newUser);
+            }
+            UserController.saveUsers();
+        }
+        else{
+            console.log("User already exists");
+        }
+    }
+    static login(email: string, password: string): User | undefined{
+        const user = UserController.getUserByEmail(email);
+        if(user && user.password === password){
+            return user;
+        }
+        return undefined;
+    }
 }
 
