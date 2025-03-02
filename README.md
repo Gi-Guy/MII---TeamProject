@@ -1,3 +1,0 @@
-# MII---TeamProject
-
-Ofir Added
