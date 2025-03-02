@@ -1,4 +1,8 @@
-export class Table{
+export  interface Tablereservation {
+        id:  "tables-outside" | "tables-inside" | "tables-bar"
+        timeSlots: { time: string; reserved: boolean }[];
+    }
+    
 
-    //This is the model class for Table
-}
+    
+ 
