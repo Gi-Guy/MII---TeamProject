@@ -1,4 +1,4 @@
-import { User } from "../Models/User";
+import { User } from "../Models/User.js";
 
 export class UserController {
     private static users: User[] = [];
@@ -34,6 +34,8 @@ export class UserController {
                 UserController.users.push(newUser);
             }
             UserController.saveUsers();
+            //check
+            console.log("New user addedd" + newUser);
             return newUser;
         }
         else{

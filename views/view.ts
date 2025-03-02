@@ -1,4 +1,4 @@
-import { UserController } from "../Controllers/userController";
+import { UserController } from "../Controllers/userController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("register-form") as HTMLFormElement;
