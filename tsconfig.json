@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
-      "noImplicitAny": true,
-      "lib": ["DOM", "ESNext"],
-      "target": "ESNext",
-      "module": "ESNext"
-  }
+    "noImplicitAny": true,
+    "lib": ["ESNext", "DOM"],
+    "target": "ES2017",
+    "module": "ES6",
+    "outDir": "./Compiled/JS",
+    "strict": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "Compiled"]
 }
