@@ -25,7 +25,7 @@ export class UserController {
     static getUserByEmail(email: string): User | undefined{
         return [...UserController.users, ...UserController.admins].find((user: User) => user.email === email);
     }
-    static addNewUser(name: string, email: string, password: string, isAdmin: boolean): void{
+    static addNewUser(name: string, email: string, password: string, isAdmin: boolean): User | null{
         if(!UserController.getUserByEmail(email)){
             const newUser = new User(name, email, password, isAdmin);
             if(isAdmin){
@@ -34,9 +34,11 @@ export class UserController {
                 UserController.users.push(newUser);
             }
             UserController.saveUsers();
+            return newUser;
         }
         else{
             console.log("User already exists");
+            return null;
         }
     }
     static login(email: string, password: string): User | undefined{
