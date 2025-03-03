@@ -1,17 +1,6 @@
 "use strict";
 
-exports.__esModule = true;
-exports.Reservations = void 0;
-
-var Reservations =
-/** @class */
-function () {
-  function Reservations() {}
-
-  return Reservations;
-}();
-
-exports.Reservations = Reservations;
+// Toggle table options based on seating selection
 var seatingRadios = document.getElementsByName("seating");
 var tableOptionsOutside = document.getElementById("tables-outside");
 var tableOptionsInside = document.getElementById("tables-inside");
@@ -34,5 +23,30 @@ function updateTableOptions() {
 
 seatingRadios.forEach(function (radio) {
   radio.addEventListener("change", updateTableOptions);
+}); // Initialize the table options on page load
+
+updateTableOptions(); // ---- Save data as JSON (in localStorage) and redirect ----
+
+var reservationForm = document.getElementById("reservationForm");
+reservationForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the default form submission
+  // Gather form data
+
+  var date = document.getElementById("reservation-date").value;
+  var time = document.getElementById("reservation-time").value;
+  var guests = document.getElementById("guests").value;
+  var seating = document.querySelector('input[name="seating"]:checked').value;
+  var table = document.querySelector('input[name="table"]:checked').value; // Create a JSON-like object
+
+  var reservationData = {
+    date: date,
+    time: time,
+    guests: guests,
+    seating: seating,
+    table: table
+  }; // Store in localStorage as a JSON string
+
+  localStorage.setItem("reservationData", JSON.stringify(reservationData)); // Redirect to the main page (adjust path if needed)
+
+  window.location.href = "index.html";
 });
-updateTableOptions();

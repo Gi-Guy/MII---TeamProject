@@ -23,16 +23,17 @@ nav a:hover {
 
 .reservation-form {
   background-color: #1f1f1f;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-  margin: 20px auto;
+  margin: 30px auto;
   max-width: 600px;
 }
 .reservation-form label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #fff;
 }
 .reservation-form input,
 .reservation-form select {
