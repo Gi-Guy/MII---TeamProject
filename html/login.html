@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../scss/dist/composition.css">
+    <link rel="stylesheet" href="../scss/dist/utility.css">
+    <link rel="stylesheet" href="../scss/dist/block.css">
+    <link rel="stylesheet" href="../scss/dist/expression.css">
+    <title>Login</title>
 </head>
+
 <body>
-    
+    <main>
+        <h1>Sign In</h1>
+        <form class="mainForm">
+            <label for="userName">UserName:</label>
+            <input id="userName" type="text" autofocus required maxlength="25">
+            <label for="password">Password:</label>
+            <input id="password" type="password" required maxlength="25">
+            <button id="login-btn" type="submit">Log In</button>
+            <article class="sign-up-articale">
+                <div>
+                    <h2>Don't have an account yet</h2>
+                    <h3>click here to sign up</h3>
+                </div>
+                <button id="sign-up-button" type="button">Sign Up</button>
+            </article>
+        </form>
+    </main>
+    <footer class="baseline-footer">
+        <article class="footer-info">
+            <article>
+                <p> &copy; All rights reserved 2025</p>
+            </article>
+            <div>
+                <button>contact us</button>
+            </div>
+        </article>
+    </footer>
 </body>
+
 </html>

@@ -1,51 +1,53 @@
-import { User } from "../Models/User";
-//controller for userimport { User } from "../Models/User.js";
+import { User } from "./User.js";
+
 export class UserController {
-    static saveUsers() {
+    private static users: User[] = [];
+    private static admins: User[] = [];
+
+    private static saveUsers(): void{
         const allUser = [...UserController.users, ...UserController.admins];
         localStorage.setItem("users", JSON.stringify(allUser));
     }
-    static loadUsers() {
+
+    static loadUsers(): void{
         const allUsers = localStorage.getItem("users");
         const userArray = allUsers ? JSON.parse(allUsers) : [];
-        UserController.users = userArray.filter((user) => !user.isAdmin);
-        UserController.admins = userArray.filter((user) => user.isAdmin);
+
+        UserController.users = userArray.filter((user: User) => !user.isAdmin);
+        UserController.admins = userArray.filter((user: User) => user.isAdmin);
     }
-    static getUsers() {
+    static getUsers(): User[]{
         return UserController.users;
     }
-    static getAdmins() {
+    static getAdmins(): User[]{
         return UserController.admins;
     }
-    static getUserByEmail(email) {
-        return [...UserController.users, ...UserController.admins].find((user) => user.email === email);
+    static getUserByEmail(email: string): User | undefined{
+        return [...UserController.users, ...UserController.admins].find((user: User) => user.email === email);
     }
-    static addNewUser(name, email, password, isAdmin) {
+    static addNewUser(name: string, email: string, password: string, isAdmin: boolean): User | null {
         if (!UserController.getUserByEmail(email)) {
             const newUser = new User(name, email, password, isAdmin);
             if (isAdmin) {
                 UserController.admins.push(newUser);
-            }
-            else {
+            } else {
                 UserController.users.push(newUser);
             }
             UserController.saveUsers();
-            //check
-            console.log("New user addedd" + newUser);
+            console.log("New user added: ", newUser);
             return newUser;
-        }
-        else {
+        } else {
             console.log("User already exists");
             return null;
         }
     }
-    static login(email, password) {
+    
+    static login(email: string, password: string): User | undefined{
         const user = UserController.getUserByEmail(email);
-        if (user && user.password === password) {
+        if(user && user.password === password){
             return user;
         }
         return undefined;
     }
 }
-UserController.users = [];
-UserController.admins = [];
+
