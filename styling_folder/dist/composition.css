@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+header {
+  background: linear-gradient(135deg, #1f1f1f, #333333);
+  padding: 40px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+header .header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+header .header-grid .left .exit-button {
+  background: #d4af37;
+  color: #121212;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+header .header-grid .left .exit-button:hover {
+  background: #b8952a;
+}
+header .header-grid .center h1 {
+  font-size: 3em;
+  margin: 0;
+  letter-spacing: 2px;
+  text-align: center;
+}
+header .header-grid .right .placeholder {
+  visibility: hidden;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
