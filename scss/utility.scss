@@ -1,0 +1,179 @@
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+
+  a {
+    background-color: transparent;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      background-color: #d4af37;
+      color: #121212;
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.5);
+    }
+  }
+}
+
+
+.reservation-form {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  margin: 20px auto;
+  max-width: 600px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d4af37;
+    border-radius: 5px;
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .radio-group {
+    margin-bottom: 15px;
+
+    >label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .seating-option-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+
+      .radio-btn {
+        position: relative;
+
+
+        input[type="radio"] {
+          display: none;
+        }
+
+
+        label {
+          display: inline-block;
+          padding: 10px 16px;
+          border: 2px solid #d4af37;
+          border-radius: 8px;
+          color: #d4af37;
+          cursor: pointer;
+          background-color: transparent;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #d4af37;
+            color: #121212;
+          }
+        }
+
+
+        input[type="radio"]:checked+label {
+          background-color: #d4af37;
+          color: #121212;
+        }
+      }
+    }
+  }
+
+  .table-options {
+    display: none;
+    margin-bottom: 15px;
+
+    &.active {
+      display: block;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .table-option-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+
+      .radio-btn {
+        position: relative;
+
+        input[type="radio"] {
+          display: none;
+        }
+
+        label {
+          display: inline-block;
+          padding: 10px 16px;
+          border: 2px solid #d4af37;
+          border-radius: 8px;
+          color: #d4af37;
+          cursor: pointer;
+          background-color: transparent;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #d4af37;
+            color: #121212;
+          }
+        }
+
+        input[type="radio"]:checked+label {
+          background-color: #d4af37;
+          color: #121212;
+        }
+      }
+    }
+  }
+
+  button {
+    background: #d4af37;
+    color: #121212;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #b8952a;
+    }
+  }
+}
+
+
+///////// login page 
+
+input,
+button {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
