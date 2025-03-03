@@ -1,0 +1,22 @@
+.sign-up-articale {
+  text-align: center;
+  margin-top: 0.5rem;
+  height: 50vh;
+}
+
+footer {
+  text-align: center;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-info button {
+  margin: 0.2rem;
+}
+
+.footer-info {
+  margin-inline: 0.5rem;
+}

@@ -23,10 +23,10 @@ nav a:hover {
 
 .reservation-form {
   background-color: #1f1f1f;
-  padding: 30px;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-  margin: 30px auto;
+  margin: 20px auto;
   max-width: 600px;
 }
 .reservation-form label {
@@ -135,4 +135,15 @@ nav a:hover {
 }
 .reservation-form button:hover {
   background: #b8952a;
+}
+
+input,
+button {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }

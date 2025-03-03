@@ -1,17 +1,5 @@
 "use strict";
 
-exports.__esModule = true;
-exports.Reservations = void 0;
-
-var Reservations =
-/** @class */
-function () {
-  function Reservations() {}
-
-  return Reservations;
-}();
-
-exports.Reservations = Reservations;
 var seatingRadios = document.getElementsByName("seating");
 var tableOptionsOutside = document.getElementById("tables-outside");
 var tableOptionsInside = document.getElementById("tables-inside");
@@ -36,3 +24,21 @@ seatingRadios.forEach(function (radio) {
   radio.addEventListener("change", updateTableOptions);
 });
 updateTableOptions();
+var reservationForm = document.getElementById("reservationForm");
+reservationForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  var date = document.getElementById("reservation-date").value;
+  var time = document.getElementById("reservation-time").value;
+  var guests = document.getElementById("guests").value;
+  var seating = document.querySelector('input[name="seating"]:checked').value;
+  var table = document.querySelector('input[name="table"]:checked').value;
+  var reservationData = {
+    date: date,
+    time: time,
+    guests: guests,
+    seating: seating,
+    table: table
+  };
+  localStorage.setItem("reservationData", JSON.stringify(reservationData));
+  window.location.href = "MainPage.html";
+});

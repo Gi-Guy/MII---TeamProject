@@ -1,4 +1,4 @@
-import { User } from "../Models/User";
+import { User } from "./User.js";
 
 export class UserController {
     private static users: User[] = [];
@@ -25,20 +25,23 @@ export class UserController {
     static getUserByEmail(email: string): User | undefined{
         return [...UserController.users, ...UserController.admins].find((user: User) => user.email === email);
     }
-    static addNewUser(name: string, email: string, password: string, isAdmin: boolean): void{
-        if(!UserController.getUserByEmail(email)){
+    static addNewUser(name: string, email: string, password: string, isAdmin: boolean): User | null {
+        if (!UserController.getUserByEmail(email)) {
             const newUser = new User(name, email, password, isAdmin);
-            if(isAdmin){
+            if (isAdmin) {
                 UserController.admins.push(newUser);
-            }else{
+            } else {
                 UserController.users.push(newUser);
             }
             UserController.saveUsers();
-        }
-        else{
+            console.log("New user added: ", newUser);
+            return newUser;
+        } else {
             console.log("User already exists");
+            return null;
         }
     }
+    
     static login(email: string, password: string): User | undefined{
         const user = UserController.getUserByEmail(email);
         if(user && user.password === password){

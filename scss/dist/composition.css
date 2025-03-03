@@ -46,3 +46,39 @@ header .header-grid .right .placeholder {
   margin: auto;
   padding: 20px;
 }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: calc(1rem + 0.5vw);
+  line-height: 1.5;
+  height: 100vh;
+}
+
+body {
+  font-family: system-ui;
+}
+
+#login-btn {
+  margin-top: 0.5rem;
+}
+
+button {
+  border-radius: 1rem;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
