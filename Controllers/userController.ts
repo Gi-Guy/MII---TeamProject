@@ -1,7 +1,5 @@
 import { User } from "../Models/User";
 
-//controller for userimport { User } from "../Models/User.js";
-
 export class UserController {
     private static users: User[] = [];
     private static admins: User[] = [];
@@ -53,3 +51,4 @@ export class UserController {
         return undefined;
     }
 }
+
