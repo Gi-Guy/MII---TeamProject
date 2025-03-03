@@ -25,3 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+//TESITNG
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Loading users from localStorage...");
+    UserController.loadUsers();
+    console.log("Users:", UserController.getUsers());
+    console.log("Admins:", UserController.getAdmins());
+});
