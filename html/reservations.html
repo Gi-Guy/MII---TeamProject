@@ -4,12 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Reservations - Wanne be Tabit</title>
+<<<<<<< HEAD
 
   <link rel="stylesheet" href="../scss/dist/composition.css">
   <link rel="stylesheet" href="../scss/dist/utility.css">
   <link rel="stylesheet" href="../scss/dist/block.css">
   <link rel="stylesheet" href="../scss/dist/expression.css">
   
+=======
+  
+  <link rel="stylesheet" href="/styling_folder/dist/block.css">
+  <link rel="stylesheet" href="/styling_folder/dist/composition.css">
+  <link rel="stylesheet" href="/styling_folder/dist/expression.css">
+  <link rel="stylesheet" href="/styling_folder/dist/utility.css">
+
+>>>>>>> origin/Updated.v2.dima
 </head>
 <body>
   <header>
@@ -31,7 +40,12 @@
       <form id="reservationForm">
         <!-- Date picker -->
         <label for="reservation-date">Date:</label>
-        <input type="date" id="reservation-date" name="reservation-date" required />
+        <input
+          type="date"
+          id="reservation-date"
+          name="reservation-date"
+          required
+        />
 
         <!-- Time dropdown -->
         <label for="reservation-time">Time:</label>
@@ -51,7 +65,13 @@
         </select>
 
         <label for="guests">Number of Guests:</label>
-        <input type="number" id="guests" name="guests" min="1" required />
+        <input
+          type="number"
+          id="guests"
+          name="guests"
+          min="1"
+          required
+        />
 
         <!-- Seating radio group with button-like styling -->
         <div class="radio-group">
@@ -89,7 +109,6 @@
         </div>
 
         <!-- Table options for each seating location -->
-        <!-- Outside -->
         <div id="tables-outside" class="table-options active">
           <label>Choose a Table (Outside):</label>
           <div class="table-option-group">
@@ -133,7 +152,6 @@
           </div>
         </div>
 
-        <!-- Inside -->
         <div id="tables-inside" class="table-options">
           <label>Choose a Table (Inside):</label>
           <div class="table-option-group">
@@ -177,7 +195,6 @@
           </div>
         </div>
 
-        <!-- Bar -->
         <div id="tables-bar" class="table-options">
           <label>Choose a Table (Bar):</label>
           <div class="table-option-group">
@@ -221,11 +238,12 @@
           </div>
         </div>
 
-        <button type="submit">Reserve</button>
+       <button type="submit">Reserve</button>
       </form>
     </div>
   </div>
 
-  <script src="/Models/dist/Reservations.js"></script>
+<script src="/dist/Reservations.js"></script>
+
 </body>
 </html>

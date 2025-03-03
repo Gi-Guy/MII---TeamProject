@@ -1,26 +1,28 @@
-// import * as Reservations from "./Reservations.js";
-// const reservationForm = document.getElementById('reservationForm') as HTMLFormElement;
-// const reservationsList = document.getElementById('reservations') as HTMLUListElement;
-// const errorMessage = document.getElementById('error-message') as HTMLDivElement;
+import { Reservations } from "./Reservations.js";
 
-// //  code for reservation function needed (based on reservation.ts)
+const reservationForm = document.getElementById('reservationForm') as HTMLFormElement;
+const reservationsList = document.getElementById('reservations') as HTMLUListElement;
+const errorMessage = document.getElementById('error-message') as HTMLDivElement;
 
-// function updateReservationList() {
-//   reservationsList.innerHTML = '';
-//   .forEach(() => {
-//     const listItem = document.createElement('li');
-//     listItem.textContent = //*
-//     reservationsList.appendChild(listItem);
-//   });
-// }
+//  code for reservation function needed (based on reservation.ts)
 
-// function setError(message: string) {
-//   errorMessage.textContent = message;
-// }
+function updateReservationList() {
+  reservationsList.innerHTML = '';
+  const reservationsArray = Reservations.getAll();
+  reservationsArray.forEach((reservation: any) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = reservation.toString(); // Assign a string value
+    reservationsList.appendChild(listItem);
+  });
+}
 
-// function clearError() {
-//   errorMessage.textContent = '';
-// }
+function setError(message: string) {
+  errorMessage.textContent = message;
+}
+
+function clearError() {
+  errorMessage.textContent = '';
+}
 
 
 
