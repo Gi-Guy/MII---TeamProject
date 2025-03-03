@@ -1,34 +1,55 @@
-// export class Reservations{
-//     //This is the model class for Reservations
-// }
+    
+    const seatingRadios = document.getElementsByName("seating");
+    const tableOptionsOutside = document.getElementById("tables-outside");
+    const tableOptionsInside = document.getElementById("tables-inside");
+    const tableOptionsBar = document.getElementById("tables-bar");
+
+    function updateTableOptions() {
+      const selectedSeating = (document.querySelector('input[name="seating"]:checked') as HTMLInputElement).value;
+      tableOptionsOutside.classList.remove("active");
+      tableOptionsInside.classList.remove("active");
+      tableOptionsBar.classList.remove("active");
+
+      if (selectedSeating === "outside") {
+        tableOptionsOutside.classList.add("active");
+      } else if (selectedSeating === "inside") {
+        tableOptionsInside.classList.add("active");
+      } else if (selectedSeating === "bar") {
+        tableOptionsBar.classList.add("active");
+      }
+    }
+
+    seatingRadios.forEach((radio) => {
+      radio.addEventListener("change", updateTableOptions);
+    });
 
     
-//     // Toggle table options based on seating selection
-//     const seatingRadios = document.getElementsByName("seating");
-//     const tableOptionsOutside = document.getElementById("tables-outside");
-//     const tableOptionsInside = document.getElementById("tables-inside");
-//     const tableOptionsBar = document.getElementById("tables-bar");
+    updateTableOptions();
 
-//     function updateTableOptions() {
-//       const selectedSeating = (document.querySelector(
-//         'input[name="seating"]:checked'
-//       ) as HTMLInputElement).value;
-//       tableOptionsOutside.classList.remove("active");
-//       tableOptionsInside.classList.remove("active");
-//       tableOptionsBar.classList.remove("active");
+    
+    const reservationForm = document.getElementById("reservationForm");
+    reservationForm.addEventListener("submit", (e) => {
+      e.preventDefault(); 
 
-//       if (selectedSeating === "outside") {
-//         tableOptionsOutside.classList.add("active");
-//       } else if (selectedSeating === "inside") {
-//         tableOptionsInside.classList.add("active");
-//       } else if (selectedSeating === "bar") {
-//         tableOptionsBar.classList.add("active");
-//       }
-//     }
+      
+      const date = (document.getElementById("reservation-date") as HTMLInputElement).value;
+      const time = (document.getElementById("reservation-time") as HTMLInputElement).value;
+      const guests = (document.getElementById("guests") as HTMLInputElement).value;
+      const seating = (document.querySelector('input[name="seating"]:checked') as HTMLInputElement).value;
+      const table = (document.querySelector('input[name="table"]:checked') as HTMLInputElement).value;
 
-//     seatingRadios.forEach((radio) => {
-//       radio.addEventListener("change", updateTableOptions);
-//     });
+      
+      const reservationData = {
+        date,
+        time,
+        guests,
+        seating,
+        table,
+      };
 
-//     // Initialize the table options on page load
-//     updateTableOptions();
+      
+      localStorage.setItem("reservationData", JSON.stringify(reservationData));
+
+      
+      window.location.href = "MainPage.html";
+    });
