@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = UserController.login(email, password);
             if (user) {
                 alert(`Welcome back, ${user.name}!`);
-                window.location.href = user.isAdmin ? "admin.html" : "reservations.html";
+                window.location.href = user.isAdmin ? "admin.html" : "MainPage.html";
             } else {
                 if (errorMessage) {
                     errorMessage.style.display = "block";
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "register.html";
         });
     }
-    
+
     if (!registerForm) {
         console.warn("register-form not found on this page.");
         return;

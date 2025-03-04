@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = UserController.login(email, password);
             if (user) {
                 alert(`Welcome back, ${user.name}!`);
-                window.location.href = user.isAdmin ? "admin.html" : "reservations.html";
+                window.location.href = user.isAdmin ? "admin.html" : "MainPage.html";
             }
             else {
                 if (errorMessage) {
