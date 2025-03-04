@@ -91,13 +91,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// Option button only for admins
+// buttons only for admins
 document.addEventListener("DOMContentLoaded", () => {
     const loggedInUser = UserController.getLoggedInUser();
     const optionsButton = document.getElementById("options-btn");
+    const tabelsButton = document.getElementById("tabels-btn");
+    const usersButton = document.getElementById("user-mn-btn");
     if (loggedInUser && loggedInUser.isAdmin) {
-        if (optionsButton) {
+        if (optionsButton && tabelsButton && usersButton) {
             optionsButton.style.display = "inline-block";
+            tabelsButton.style.display = "inline-block";
+            usersButton.style.display = "inline-block";
         }
     }
 });
