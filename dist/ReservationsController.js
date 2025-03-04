@@ -79,10 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <option value="bar" ${reservation.seating === 'bar' ? 'selected' : ''}>Bar</option>
             </select>
             <select id="table">
-                <option value="1" ${reservation.table === 1 ? 'selected' : ''}>1</option>
-                <option value="2" ${reservation.table === 2 ? 'selected' : ''}>2</option>
-                <option value="3" ${reservation.table === 3 ? 'selected' : ''}>3</option>
-                <option value="4" ${reservation.table === 4 ? 'selected' : ''}>4</option>
+                <option value="1" ${reservation.table === '1' ? 'selected' : ''}>1</option>
+                <option value="2" ${reservation.table === '2' ? 'selected' : ''}>2</option>
+                <option value="3" ${reservation.table === '3' ? 'selected' : ''}>3</option>
+                <option value="4" ${reservation.table === '4' ? 'selected' : ''}>4</option>
             </select>
             <button id="save-changes">Save Changes</button>
         </div>
