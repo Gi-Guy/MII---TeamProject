@@ -12,9 +12,18 @@
 </head>
 <body>
     <header>
-        <h1>Reservations Management</h1>
-        <button id="logout-btn">Logout</button>
-    </header>
+        <div class="header-grid">
+          <div class="left">
+            <a href="javascript:window.history.back();" class="exit-button">Back</a>
+          </div>
+          <div class="center">
+            <h1>Reservations</h1>
+          </div>
+          <div class="right">
+            <span class="placeholder">Back</span>
+          </div>
+        </div>
+      </header>
     <main>
         <ul id="reservations-list">
             <!-- Reservations will be loaded here dynamically -->

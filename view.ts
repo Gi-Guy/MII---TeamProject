@@ -106,14 +106,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Option button only for admins
+// buttons only for admins
 document.addEventListener("DOMContentLoaded", () => {
     const loggedInUser = UserController.getLoggedInUser();
     const optionsButton = document.getElementById("options-btn") as HTMLAnchorElement | null;
+    const tabelsButton = document.getElementById("tabels-btn") as HTMLAnchorElement | null;
+    const usersButton = document.getElementById("user-mn-btn") as HTMLAnchorElement | null;
 
     if (loggedInUser && loggedInUser.isAdmin) {
-        if (optionsButton) {
+        if (optionsButton && tabelsButton && usersButton) {
             optionsButton.style.display = "inline-block";
+            tabelsButton.style.display = "inline-block";
+            usersButton.style.display = "inline-block";
         }
     }
 });
