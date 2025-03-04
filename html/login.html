@@ -8,37 +8,29 @@
     <link rel="stylesheet" href="../scss/dist/utility.css">
     <link rel="stylesheet" href="../scss/dist/block.css">
     <link rel="stylesheet" href="../scss/dist/expression.css">
+    <script type="module" src="../dist/view.js"></script>
     <title>Login</title>
 </head>
 
 <body>
     <main>
         <h1>Sign In</h1>
-        <form class="mainForm">
-            <label for="userName">UserName:</label>
-            <input id="userName" type="text" autofocus required maxlength="25">
+        <form id="login-form" class="mainForm">
+            <label for="email">Email:</label>
+            <input id="email" type="email" autofocus required maxlength="50">
             <label for="password">Password:</label>
             <input id="password" type="password" required maxlength="25">
             <button id="login-btn" type="submit">Log In</button>
+            <p id="error-message" style="color: red; display: none;">Invalid email or password</p>
             <article class="sign-up-articale">
                 <div>
-                    <h2>Don't have an account yet</h2>
-                    <h3>click here to sign up</h3>
+                    <h2>Don't have an account yet?</h2>
+                    <h3>Click here to sign up</h3>
                 </div>
                 <button id="sign-up-button" type="button">Sign Up</button>
             </article>
         </form>
     </main>
-    <footer class="baseline-footer">
-        <article class="footer-info">
-            <article>
-                <p> &copy; All rights reserved 2025</p>
-            </article>
-            <div>
-                <button>contact us</button>
-            </div>
-        </article>
-    </footer>
 </body>
 
 </html>

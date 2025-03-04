@@ -2,8 +2,8 @@ import { User } from "./User.js";
 let UserController = /** @class */ (() => {
     class UserController {
         static saveUsers() {
-            const allUser = [...UserController.users, ...UserController.admins];
-            localStorage.setItem("users", JSON.stringify(allUser));
+            const allUsers = [...UserController.users, ...UserController.admins];
+            localStorage.setItem("users", JSON.stringify(allUsers));
         }
         static loadUsers() {
             const allUsers = localStorage.getItem("users");
@@ -41,9 +41,20 @@ let UserController = /** @class */ (() => {
         static login(email, password) {
             const user = UserController.getUserByEmail(email);
             if (user && user.password === password) {
+                UserController.setLoggedInUser(user);
                 return user;
             }
             return undefined;
+        }
+        static setLoggedInUser(user) {
+            localStorage.setItem("loggedInUser", JSON.stringify(user));
+        }
+        static getLoggedInUser() {
+            const userData = localStorage.getItem("loggedInUser");
+            return userData ? JSON.parse(userData) : null;
+        }
+        static logout() {
+            localStorage.removeItem("loggedInUser");
         }
     }
     UserController.users = [];
