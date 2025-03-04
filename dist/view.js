@@ -1,6 +1,31 @@
 import { UserController } from "./userController.js";
 document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("register-form");
+    const loginForm = document.getElementById("login-form");
+    const errorMessage = document.getElementById("error-message");
+    const signUpButton = document.getElementById("sign-up-button");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const user = UserController.login(email, password);
+            if (user) {
+                alert(`Welcome back, ${user.name}!`);
+                window.location.href = user.isAdmin ? "admin.html" : "reservations.html";
+            }
+            else {
+                if (errorMessage) {
+                    errorMessage.style.display = "block";
+                }
+            }
+        });
+    }
+    if (signUpButton) {
+        signUpButton.addEventListener("click", () => {
+            window.location.href = "register.html";
+        });
+    }
     if (!registerForm) {
         console.warn("register-form not found on this page.");
         return;
