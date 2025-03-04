@@ -80,6 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+//Logout button
+document.addEventListener("DOMContentLoaded", () => {
+    const exitButton = document.getElementById("exit-btn");
+    if (exitButton) {
+        exitButton.addEventListener("click", () => {
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "login.html";
+        });
+    }
+});
 //TESITNG
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Loading users from localStorage...");
