@@ -1,0 +1,59 @@
+.admin-page {
+  padding: 2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #585858;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background: #d4af37;
+  color: #121212;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #000000;
+}
+
+.role-select {
+  padding: 0.25rem;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+input[type=checkbox] {
+  margin-right: 0.25rem;
+}
+
+button.save-btn {
+  padding: 0.4rem 0.8rem;
+  background: #d4af37;
+  color: #121212;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button.save-btn:hover {
+  background: #b8952a;
+}
