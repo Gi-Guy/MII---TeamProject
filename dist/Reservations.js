@@ -1,41 +1,36 @@
-const seatingRadios = document.getElementsByName("seating");
-const tableOptionsOutside = document.getElementById("tables-outside");
-const tableOptionsInside = document.getElementById("tables-inside");
-const tableOptionsBar = document.getElementById("tables-bar");
-function updateTableOptions() {
-    const selectedSeating = document.querySelector('input[name="seating"]:checked').value;
-    tableOptionsOutside.classList.remove("active");
-    tableOptionsInside.classList.remove("active");
-    tableOptionsBar.classList.remove("active");
-    if (selectedSeating === "outside") {
-        tableOptionsOutside.classList.add("active");
+let Reservation = /** @class */ (() => {
+    class Reservation {
+        constructor(date, time, guests, seating, table) {
+            this.id = `res-${Date.now()}`;
+            this.date = date;
+            this.time = time;
+            this.guests = guests;
+            this.seating = seating;
+            this.table = table;
+        }
+        save() {
+            Reservation.reservations.push(this);
+            Reservation.saveReservations();
+            console.log("✅ New reservation added:", this);
+        }
+        static loadReservations() {
+            const reservationsData = localStorage.getItem(Reservation.RESERVATIONS_STORAGE_KEY);
+            return reservationsData ? JSON.parse(reservationsData) : [];
+        }
+        static saveReservations() {
+            localStorage.setItem(Reservation.RESERVATIONS_STORAGE_KEY, JSON.stringify(Reservation.reservations));
+        }
+        static getReservations() {
+            return Reservation.reservations;
+        }
+        static getAllReservations() {
+            return Reservation.getReservations();
+        }
     }
-    else if (selectedSeating === "inside") {
-        tableOptionsInside.classList.add("active");
-    }
-    else if (selectedSeating === "bar") {
-        tableOptionsBar.classList.add("active");
-    }
-}
-seatingRadios.forEach((radio) => {
-    radio.addEventListener("change", updateTableOptions);
-});
-updateTableOptions();
-const reservationForm = document.getElementById("reservationForm");
-reservationForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const date = document.getElementById("reservation-date").value;
-    const time = document.getElementById("reservation-time").value;
-    const guests = document.getElementById("guests").value;
-    const seating = document.querySelector('input[name="seating"]:checked').value;
-    const table = document.querySelector('input[name="table"]:checked').value;
-    const reservationData = {
-        date,
-        time,
-        guests,
-        seating,
-        table,
-    };
-    localStorage.setItem("reservationData", JSON.stringify(reservationData));
-    window.location.href = "MainPage.html";
-});
+    Reservation.RESERVATIONS_STORAGE_KEY = "reservations";
+    Reservation.reservations = Reservation.loadReservations();
+    return Reservation;
+})();
+export { Reservation };
+// TESTING
+console.log("Loaded Reservations:", Reservation.getAllReservations());

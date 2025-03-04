@@ -1,5 +1,7 @@
 import { UserController } from "./userController.js";
+import { Reservation } from "./Reservations.js";
 
+// Login and Register pages
 document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("register-form") as HTMLFormElement | null;
     const loginForm = document.getElementById("login-form") as HTMLFormElement | null;
@@ -58,6 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Reservation page
+document.addEventListener("DOMContentLoaded", () => {
+    const reservationForm = document.getElementById("reservationForm") as HTMLFormElement | null;
+
+    if (reservationForm) {
+        reservationForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const date = (document.getElementById("reservation-date") as HTMLInputElement).value;
+            const time = (document.getElementById("reservation-time") as HTMLInputElement).value;
+            const guests = parseInt((document.getElementById("guests") as HTMLInputElement).value);
+            const seating = (document.querySelector('input[name="seating"]:checked') as HTMLInputElement).value;
+            const table = (document.querySelector('input[name="table"]:checked') as HTMLInputElement).value;
+
+            const newReservation = new Reservation(date, time, guests, seating, table);
+            newReservation.save();
+
+            console.log("New Reservation Added:", newReservation);
+            console.log("Updated Reservations List:", Reservation.getReservations());
+
+            alert("Reservation added successfully!");
+            reservationForm.reset();
+        });
+    }
+});
 //TESITNG
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Loading users from localStorage...");

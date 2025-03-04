@@ -1,4 +1,6 @@
 import { UserController } from "./userController.js";
+import { Reservation } from "./Reservations.js";
+// Login and Register pages
 document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("register-form");
     const loginForm = document.getElementById("login-form");
@@ -49,6 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
             else {
                 alert("Error: Email already exists.");
             }
+        });
+    }
+});
+// Reservation page
+document.addEventListener("DOMContentLoaded", () => {
+    const reservationForm = document.getElementById("reservationForm");
+    if (reservationForm) {
+        reservationForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const date = document.getElementById("reservation-date").value;
+            const time = document.getElementById("reservation-time").value;
+            const guests = parseInt(document.getElementById("guests").value);
+            const seating = document.querySelector('input[name="seating"]:checked').value;
+            const table = document.querySelector('input[name="table"]:checked').value;
+            const newReservation = new Reservation(date, time, guests, seating, table);
+            newReservation.save();
+            console.log("New Reservation Added:", newReservation);
+            console.log("Updated Reservations List:", Reservation.getReservations());
+            alert("Reservation added successfully!");
+            reservationForm.reset();
         });
     }
 });
