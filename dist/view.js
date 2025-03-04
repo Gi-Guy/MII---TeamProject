@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = UserController.login(email, password);
             if (user) {
                 alert(`Welcome back, ${user.name}!`);
-                window.location.href = user.isAdmin ? "ReservedTables.html" : "MainPage.html";
+                window.location.href = user.isAdmin ? "MainPage.html" : "MainPage.html";
             }
             else {
                 if (errorMessage) {
@@ -88,6 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.removeItem("loggedInUser");
             window.location.href = "login.html";
         });
+    }
+});
+// Option button only for admins
+document.addEventListener("DOMContentLoaded", () => {
+    const loggedInUser = UserController.getLoggedInUser();
+    const optionsButton = document.getElementById("options-btn");
+    if (loggedInUser && loggedInUser.isAdmin) {
+        if (optionsButton) {
+            optionsButton.style.display = "inline-block";
+        }
     }
 });
 //TESITNG
