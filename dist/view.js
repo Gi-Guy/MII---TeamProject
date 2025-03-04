@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = UserController.login(email, password);
             if (user) {
                 alert(`Welcome back, ${user.name}!`);
-                window.location.href = user.isAdmin ? "admin.html" : "MainPage.html";
+                window.location.href = user.isAdmin ? "ReservedTables.html" : "MainPage.html";
             }
             else {
                 if (errorMessage) {
@@ -72,8 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const table = document.querySelector('input[name="table"]:checked').value;
             const newReservation = new Reservation(date, time, guests, seating, table);
             newReservation.save();
-            console.log("📌 Reservation added:", newReservation);
-            console.log("📌 All Reservations:", Reservation.getReservations());
+            //TESTING
+            console.log("Reservation added:", newReservation);
+            console.log("All Reservations:", Reservation.getReservations());
             alert(`Reservation added successfully for ${loggedInUser.name}!`);
             reservationForm.reset();
         });

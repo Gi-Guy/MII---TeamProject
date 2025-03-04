@@ -1,6 +1,5 @@
 import { Reservation } from "./Reservations.js";
 import { UserController } from "./userController.js";
-
 document.addEventListener("DOMContentLoaded", () => {
     const loggedInUser = UserController.getLoggedInUser();
     if (!loggedInUser || !loggedInUser.isAdmin) {
@@ -8,17 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "MainPage.html";
         return;
     }
-
-    const reservationsList = document.getElementById("reservations-list") as HTMLUListElement;
-
+    const reservationsList = document.getElementById("reservations-list");
     function renderReservations() {
         const reservations = Reservation.loadReservations();
         reservationsList.innerHTML = "";
-
         reservations.forEach((reservation) => {
             const listItem = document.createElement("li");
             listItem.classList.add("reservation-item");
-
             listItem.innerHTML = `
                 <div>
                     <strong>${reservation.userName}</strong> (${reservation.userEmail})
@@ -31,36 +26,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <button class="delete-btn" data-id="${reservation.id}">Delete</button>
             `;
-
             reservationsList.appendChild(listItem);
         });
-
-        addDeleteEventListeners(); 
+        addDeleteEventListeners();
     }
-
     function addDeleteEventListeners() {
         document.querySelectorAll(".delete-btn").forEach((button) => {
             button.addEventListener("click", (event) => {
-                const reservationId = (event.target as HTMLButtonElement).getAttribute("data-id");
+                const reservationId = event.target.getAttribute("data-id");
                 if (reservationId) {
                     deleteReservation(reservationId);
                 }
             });
         });
     }
-
-    function deleteReservation(reservationId: string) {
+    function deleteReservation(reservationId) {
         let reservations = Reservation.loadReservations();
         reservations = reservations.filter(res => res.id !== reservationId);
         localStorage.setItem("reservations", JSON.stringify(reservations));
-
         renderReservations();
     }
-
     document.getElementById("logout-btn")?.addEventListener("click", () => {
         UserController.logout();
         window.location.href = "login.html";
     });
-
     renderReservations();
 });

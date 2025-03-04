@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = UserController.login(email, password);
             if (user) {
                 alert(`Welcome back, ${user.name}!`);
-                window.location.href = user.isAdmin ? "admin.html" : "MainPage.html";
+                window.location.href = user.isAdmin ? "ReservedTables.html" : "MainPage.html";
             } else {
                 if (errorMessage) {
                     errorMessage.style.display = "block";
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Reservation page
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     const reservationForm = document.getElementById("reservationForm") as HTMLFormElement | null;
 
     if (reservationForm) {
@@ -83,9 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const newReservation = new Reservation(date, time, guests, seating, table);
             newReservation.save();
-
-            console.log("📌 Reservation added:", newReservation);
-            console.log("📌 All Reservations:", Reservation.getReservations());
+            //TESTING
+            console.log("Reservation added:", newReservation);
+            console.log("All Reservations:", Reservation.getReservations());
 
             alert(`Reservation added successfully for ${loggedInUser.name}!`);
             reservationForm.reset();
