@@ -1,25 +1,141 @@
-////////// login page //////////////
-main {
-    width: min(70ch, 100% - 2rem);
-    margin-inline: auto;
+
+.login-page {
+  margin: 10px;
+  min-height: auto;         
+  background: #121212;       
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
-h1 {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
-    text-align: center;
+
+.login-card {
+  background: #fff;
+  width: 400px;                
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-top: 30px;
 }
 
-.mainForm{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+
+.login-card h1 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #333;
 }
 
-.footer-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+ 
+  height: auto !important;
 }
 
+.loginForm label {
+  text-align: left;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.loginForm input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: border 0.2s ease;
+
+  &:focus {
+    border-color: #d4af37; 
+    outline: none;
+  }
+}
+
+
+.loginForm button[type="submit"] {
+  padding: 0.5rem;
+  background: #d4af37;
+  color: #121212;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #b8952a;
+  }
+}
+
+
+#error-message {
+  display: none;
+  color: red;
+  font-size: 0.85rem;
+}
+
+
+.sign-up-article {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+
+  h2 {
+    font-size: 1rem;
+    color: #333;
+  }
+  h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.3rem 0 0.6rem;
+  }
+
+
+  button {
+    background: transparent;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #d4af37;
+      color: #121212;
+    }
+  }
+}
+
+nav.admin-nav {
+  margin: 20px 0;
+}
+nav.admin-nav button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #d4af37;
+  border: none;
+  border-radius: 5px;
+  color: #121212;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+nav.admin-nav button.active {
+  background-color: #b8952a;
+}
+.admin-section {
+  display: none;
+}
+.admin-section.active {
+  display: block;
+}
