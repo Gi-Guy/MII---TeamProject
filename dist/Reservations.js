@@ -1,12 +1,19 @@
+import { UserController } from "./userController.js";
 let Reservation = /** @class */ (() => {
     class Reservation {
         constructor(date, time, guests, seating, table) {
+            const loggedInUser = UserController.getLoggedInUser();
+            if (!loggedInUser) {
+                throw new Error("No logged-in user found. Cannot create reservation.");
+            }
             this.id = `res-${Date.now()}`;
             this.date = date;
             this.time = time;
             this.guests = guests;
             this.seating = seating;
             this.table = table;
+            this.userName = loggedInUser.name;
+            this.userEmail = loggedInUser.email;
         }
         save() {
             Reservation.reservations.push(this);
@@ -23,14 +30,10 @@ let Reservation = /** @class */ (() => {
         static getReservations() {
             return Reservation.reservations;
         }
-        static getAllReservations() {
-            return Reservation.getReservations();
-        }
     }
     Reservation.RESERVATIONS_STORAGE_KEY = "reservations";
     Reservation.reservations = Reservation.loadReservations();
     return Reservation;
 })();
 export { Reservation };
-// TESTING
-console.log("Loaded Reservations:", Reservation.getAllReservations());
+console.log("Loaded Reservations:", Reservation.getReservations());

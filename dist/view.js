@@ -60,6 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (reservationForm) {
         reservationForm.addEventListener("submit", (e) => {
             e.preventDefault();
+            const loggedInUser = UserController.getLoggedInUser();
+            if (!loggedInUser) {
+                alert("You must be logged in to make a reservation.");
+                return;
+            }
             const date = document.getElementById("reservation-date").value;
             const time = document.getElementById("reservation-time").value;
             const guests = parseInt(document.getElementById("guests").value);
@@ -67,9 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const table = document.querySelector('input[name="table"]:checked').value;
             const newReservation = new Reservation(date, time, guests, seating, table);
             newReservation.save();
-            console.log("New Reservation Added:", newReservation);
-            console.log("Updated Reservations List:", Reservation.getReservations());
-            alert("Reservation added successfully!");
+            console.log("📌 Reservation added:", newReservation);
+            console.log("📌 All Reservations:", Reservation.getReservations());
+            alert(`Reservation added successfully for ${loggedInUser.name}!`);
             reservationForm.reset();
         });
     }
