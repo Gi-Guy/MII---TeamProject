@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = UserController.login(email, password);
             if (user) {
                 alert(`Welcome back, ${user.name}!`);
-                window.location.href = user.isAdmin ? "MainPage.html" : "MainPage.html";
+                window.location.href = user.isAdmin ? "ReservedTables.html" : "MainPage.html";
             } else {
                 if (errorMessage) {
                     errorMessage.style.display = "block";
