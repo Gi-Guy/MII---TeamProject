@@ -1,55 +1,54 @@
-    
-    const seatingRadios = document.getElementsByName("seating");
-    const tableOptionsOutside = document.getElementById("tables-outside");
-    const tableOptionsInside = document.getElementById("tables-inside");
-    const tableOptionsBar = document.getElementById("tables-bar");
+import { UserController } from "./userController.js"; 
 
-    function updateTableOptions() {
-      const selectedSeating = (document.querySelector('input[name="seating"]:checked') as HTMLInputElement).value;
-      tableOptionsOutside.classList.remove("active");
-      tableOptionsInside.classList.remove("active");
-      tableOptionsBar.classList.remove("active");
+export class Reservation {
+    id: string;
+    date: string;
+    time: string;
+    guests: number;
+    seating: string;
+    table: string;
+    userName: string; 
+    userEmail: string; 
 
-      if (selectedSeating === "outside") {
-        tableOptionsOutside.classList.add("active");
-      } else if (selectedSeating === "inside") {
-        tableOptionsInside.classList.add("active");
-      } else if (selectedSeating === "bar") {
-        tableOptionsBar.classList.add("active");
-      }
+    private static RESERVATIONS_STORAGE_KEY = "reservations";
+    private static reservations: Reservation[] = Reservation.loadReservations();
+
+    constructor(date: string, time: string, guests: number, seating: string, table: string) {
+        const loggedInUser = UserController.getLoggedInUser(); 
+
+        if (!loggedInUser) {
+            throw new Error("No logged-in user found. Cannot create reservation.");
+        }
+
+        this.id = `res-${Date.now()}`;
+        this.date = date;
+        this.time = time;
+        this.guests = guests;
+        this.seating = seating;
+        this.table = table;
+        this.userName = loggedInUser.name; 
+        this.userEmail = loggedInUser.email; 
     }
 
-    seatingRadios.forEach((radio) => {
-      radio.addEventListener("change", updateTableOptions);
-    });
+    save(): void {
+        Reservation.reservations.push(this);
+        Reservation.saveReservations();
+        console.log("✅ New reservation added:", this);
+    }
 
-    
-    updateTableOptions();
+    static loadReservations(): Reservation[] {
+        const reservationsData = localStorage.getItem(Reservation.RESERVATIONS_STORAGE_KEY);
+        return reservationsData ? JSON.parse(reservationsData) : [];
+    }
 
-    
-    const reservationForm = document.getElementById("reservationForm");
-    reservationForm.addEventListener("submit", (e) => {
-      e.preventDefault(); 
+    static saveReservations(): void {
+        localStorage.setItem(Reservation.RESERVATIONS_STORAGE_KEY, JSON.stringify(Reservation.reservations));
+    }
 
-      
-      const date = (document.getElementById("reservation-date") as HTMLInputElement).value;
-      const time = (document.getElementById("reservation-time") as HTMLInputElement).value;
-      const guests = (document.getElementById("guests") as HTMLInputElement).value;
-      const seating = (document.querySelector('input[name="seating"]:checked') as HTMLInputElement).value;
-      const table = (document.querySelector('input[name="table"]:checked') as HTMLInputElement).value;
+    static getReservations(): Reservation[] {
+        return Reservation.reservations;
+    }
+}
 
-      
-      const reservationData = {
-        date,
-        time,
-        guests,
-        seating,
-        table,
-      };
 
-      
-      localStorage.setItem("reservationData", JSON.stringify(reservationData));
-
-      
-      window.location.href = "MainPage.html";
-    });
+console.log("Loaded Reservations:", Reservation.getReservations());

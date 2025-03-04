@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reserved Tables</title>
+    <title>Reservations Management</title>
     <link rel="stylesheet" href="../scss/dist/composition.css">
     <link rel="stylesheet" href="../scss/dist/utility.css">
     <link rel="stylesheet" href="../scss/dist/block.css">
     <link rel="stylesheet" href="../scss/dist/expression.css">
+    <script type="module" src="../dist/ReservationsController.js"></script>
 </head>
 <body>
-    
-    <div id="reservations-list">
-        <h2>Current Reservations</h2>
-        <ul id="reservations"></ul>
-      </div>
-      
-
-      <script src="/dist/Table.js"></script>
-  
+    <header>
+        <h1>Reservations Management</h1>
+        <button id="logout-btn">Logout</button>
+    </header>
+    <main>
+        <ul id="reservations-list">
+            <!-- Reservations will be loaded here dynamically -->
+        </ul>
+    </main>
 </body>
 </html>
