@@ -12,25 +12,33 @@
     <title>Login</title>
 </head>
 
-<body>
-    <main>
-        <h1>Sign In</h1>
-        <form id="login-form" class="mainForm">
-            <label for="email">Email:</label>
-            <input id="email" type="email" autofocus required maxlength="50">
-            <label for="password">Password:</label>
-            <input id="password" type="password" required maxlength="25">
-            <button id="login-btn" type="submit">Log In</button>
-            <p id="error-message" style="color: red; display: none;">Invalid email or password</p>
-            <article class="sign-up-articale">
-                <div>
-                    <h2>Don't have an account yet?</h2>
-                    <h3>Click here to sign up</h3>
-                </div>
-                <button id="sign-up-button" type="button">Sign Up</button>
-            </article>
-        </form>
-    </main>
-</body>
 
-</html>
+
+<body class="login-page">
+    <main class="login-card">
+      <h1>Sign In</h1>
+      <form id="login-form" class="loginForm">
+        <label for="email">Email:</label>
+        <input id="email" type="email" autofocus required maxlength="50" />
+  
+        <label for="password">Password:</label>
+        <input id="password" type="password" required maxlength="25" />
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="admin-check" />
+            <label for="admin-check">I’m an admin</label>
+          </div>
+  
+        <button id="login-btn" type="submit">Log In</button>
+        <p id="error-message">Invalid email or password</p>
+  
+        <article class="sign-up-article">
+          <h2>Don't have an account yet?</h2>
+          <h3>Click here to sign up</h3>
+          <button id="sign-up-button" type="button">Sign Up</button>
+        </article>
+      </form>
+    </main>
+    <script type="module" src="../dist/view.js"></script>
+  </body>
+   </html>

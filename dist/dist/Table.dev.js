@@ -1,20 +1,28 @@
 "use strict";
 
-var _Reservations = require("./Reservations.js");
+//  import { Reservations } from "./Reservations.js"; 
+var reservationsList = document.getElementById('reservations-list');
+localStorage.getItem("reservationData");
+var reservation = JSON.parse(localStorage.getItem("reservationData") || "[]");
 
-var reservationForm = document.getElementById('reservationForm');
-var reservationsList = document.getElementById('reservations');
-var errorMessage = document.getElementById('error-message'); //  code for reservation function needed (based on reservation.ts)
-
-function updateReservationList() {
-  reservationsList.innerHTML = '';
-
-  var reservationsArray = _Reservations.Reservations.getAll();
-
-  reservationsArray.forEach(function (reservation) {
-    var listItem = document.createElement('li');
-    listItem.textContent = reservation.toString(); // Assign a string value
-
-    reservationsList.appendChild(listItem);
+document.getElementById('reservationForm').onsubmit = function (e) {
+  e.preventDefault();
+  var item = document.createElement('div');
+  var date = document.getElementById("reservation-date").value;
+  var time = document.getElementById("reservation-time").value;
+  var guests = document.getElementById("guests").value;
+  var seating = document.querySelector('input[name="seating"]:checked').value;
+  var table = document.querySelector('input[name="table"]:checked').value;
+  var newReservation = {
+    date: date,
+    time: time,
+    guests: guests,
+    seating: seating,
+    table: table
+  };
+  reservation.forEach(function (NewRes) {
+    item.innerText = " ".concat(NewRes.date, " at ").concat(NewRes.time, " ,  ").concat(NewRes.guests, " , ").concat(NewRes.seating, " , ").concat(NewRes.table);
+    reservationsList.appendChild(item);
+    reservation.push(newReservation);
   });
-}
+};

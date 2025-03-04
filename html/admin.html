@@ -3,9 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin-MainPage</title>
+
+<link rel="stylesheet" href="/scss/dist/block.css">
+<link rel="stylesheet" href="/scss/dist/composition.css">
+<link rel="stylesheet" href="/scss/dist/expression.css">
+<link rel="stylesheet" href="/scss/dist/utility.css">
+
 </head>
 <body>
-    <h1>This is the admin page</h1>
+    <header>
+        <div class="header-grid">
+          <div class="left">
+            <a href="javascript:window.history.back();" class="exit-button" id="goMain">Back</a>
+          </div>
+          <div class="center">
+            <h1>Adminstator</h1>
+          </div>
+        </div>
+      </header>
+
+      <nav class="admin-nav">
+        <button id="nav-dashboard" class="active">Dashboard</button>
+        <button id="nav-reservations">Reservations</button>
+        <button id="nav-tables">Table Management</button>
+        <button id="nav-content">Content Updates</button>
+      </nav>
+    
+    
+      <section id="section-dashboard" class="admin-section active">
+        <h2>Dashboard Overview</h2>
+        <p>Key metrics and summaries appear here.</p>
+      </section>
+    
+     
+      <section id="section-reservations" class="admin-section">
+        <h2>Reservation Management</h2>
+        <p>View and manage reservations here.</p>
+        
+      </section>
+    
+      
+      <section id="section-tables" class="admin-section">
+        <h2>Table/Seating Management</h2>
+        <p>Update table availability and seating arrangements here.</p>
+        
+      </section>
+    
+      
+      <section id="section-content" class="admin-section">
+        <h2>Content Updates</h2>
+        <p>Edit banners, announcements, and other website content here.</p>
+        
+      </section>
+
+
+      <script src="/dist/admin.js"></script>
+      <script src="/dist/backbuttons.js"></script>
+      
 </body>
 </html>
