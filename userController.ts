@@ -67,4 +67,16 @@ export class UserController {
     static logout(): void {
         localStorage.removeItem("loggedInUser");
     }
+    static updateUser(email: string, newName: string, isAdmin: boolean): void {
+        let users = [...UserController.getUsers(), ...UserController.getAdmins()];
+        const user = users.find(user => user.email === email);
+    
+        if (!user) return;
+    
+        user.name = newName;
+        user.isAdmin = isAdmin;
+    
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+    
 }
