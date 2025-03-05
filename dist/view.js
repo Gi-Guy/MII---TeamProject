@@ -72,15 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const seating = document.querySelector('input[name="seating"]:checked').value;
             const table = document.querySelector('input[name="table"]:checked').value;
             const newReservation = new Reservation(date, time, guests, seating, table);
-            const previousReservations = Reservation.getReservations();
             newReservation.save();
             //TESTING
             console.log("Reservation added:", newReservation);
             console.log("All Reservations:", Reservation.getReservations());
-            const updatedReservations = Reservation.getReservations();
-            if (previousReservations.length === updatedReservations.length) {
-                return;
-            }
             alert(`Reservation added successfully for ${loggedInUser.name}!`);
             reservationForm.reset();
         });
