@@ -73,11 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const table = document.querySelector('input[name="table"]:checked').value;
             const newReservation = new Reservation(date, time, guests, seating, table);
             newReservation.save();
-            //TESTING
+            // Logging for testing purposes
             console.log("Reservation added:", newReservation);
             console.log("All Reservations:", Reservation.getReservations());
             alert(`Reservation added successfully for ${loggedInUser.name}!`);
             reservationForm.reset();
+            // Redirect to MainPage.html after reservation
+            window.location.href = "MainPage.html";
         });
     }
 });
