@@ -9,25 +9,69 @@
     <link rel="stylesheet" href="../scss/dist/block.css">
     <link rel="stylesheet" href="../scss/dist/expression.css">
     <script type="module" src="../dist/ReservationsController.js"></script>
+    <script src="../dist/backbutton3tables.js"></script>
+    
 </head>
 <body>
-    <header>
-        <div class="header-grid">
-          <div class="left">
-            <a href="javascript:window.history.back();" class="exit-button">Back</a>
-          </div>
-          <div class="center">
-            <h1>Reservations</h1>
-          </div>
-          <div class="right">
-            <span class="placeholder">Back</span>
-          </div>
-        </div>
-      </header>
+  <header>
+    <div class="header-grid">
+      <div class="left">
+        <!-- Remove the javascript: window.history.back() from the href -->
+        <a href="MainPage.html" class="exit-button" id="goMain4">Back</a>
+      </div>
+      <div class="center">
+        <h1>Reservations</h1>
+      </div>
+      <div class="right">
+        <span class="placeholder">Back</span>
+      </div>
+    </div>
+  </header>
+  
     <main>
         <ul id="reservations-list">
             <!-- Reservations will be loaded here dynamically -->
         </ul>
+        <div class="modal-overlay" id="edit-reservation-modal" style="display: none;">
+          <div class="modal-content">
+            <h2>Edit Reservation</h2>
+        
+            <label for="username">Name:</label>
+            <input type="text" id="username" />
+        
+            <label for="useremail">Email:</label>
+            <input type="email" id="useremail" />
+        
+            <label for="date">Date:</label>
+            <input type="date" id="date" />
+        
+            <label for="time">Time:</label>
+            <input type="time" id="time" />
+        
+            <label for="guests">Guests:</label>
+            <input type="number" id="guests" min="1" />
+        
+            <label for="seating">Seating:</label>
+            <select id="seating">
+              <option value="outside">Outside</option>
+              <option value="inside">Inside</option>
+              <option value="bar">Bar</option>
+            </select>
+        
+            <label for="table">Table #:</label>
+            <select id="table">
+              <option value="1">Table 1</option>
+              <option value="2">Table 2</option>
+              <option value="3">Table 3</option>
+              <option value="4">Table 4</option>
+            </select>
+        
+            <div class="modal-buttons">
+              <button id="save-changes" class="save-btn">Save</button>
+              <button id="close-modal" class="cancel-btn">Cancel</button>
+            </div>
+          </div>
+        </div>
     </main>
 </body>
 </html>

@@ -22,3 +22,158 @@ footer ul {
 .footer-info{
     margin-inline: 0.5rem;
 }
+
+
+/* Reservations Page Styling */
+.admin-page {
+    background: #f8f8f8;
+    padding: 2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+  
+  #reservations-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .reservation-item {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .reservation-item > div {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.4;
+  }
+  
+  .reservation-item strong {
+    color: #333;
+  }
+  
+  .delete-btn {
+    align-self: flex-end;
+    background: #d4af37;
+    color: #121212;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background: #b8952a;
+  }
+  
+  
+
+  
+  /* Modal Overlay (dark semi-transparent background) */
+  .modal-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    
+  }
+  
+  
+  .modal-content {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 0;  
+  }
+  
+  
+  .modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  
+  .modal-content label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .modal-content input,
+  .modal-content select {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: border 0.2s ease;
+  }
+  
+  .modal-content input:focus,
+  .modal-content select:focus {
+    border-color: #d4af37; 
+    outline: none;
+  }
+  
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+  
+  
+  .save-btn,
+  .cancel-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 0.9rem;
+  }
+  
+  
+  .save-btn {
+    background: #d4af37;
+    color: #121212;
+  }
+  
+  .save-btn:hover {
+    background: #b8952a;
+  }
+  
+  
+  .cancel-btn {
+    background: #ccc;
+    color: #333;
+  }
+  
+  .cancel-btn:hover {
+    background: #bbb;
+  }
+  

@@ -63,42 +63,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Reservation page
 document.addEventListener("DOMContentLoaded", () => {
-
     const reservationForm = document.getElementById("reservationForm") as HTMLFormElement | null;
-
+  
     if (reservationForm) {
-        reservationForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const loggedInUser = UserController.getLoggedInUser();
-            if (!loggedInUser) {
-                alert("You must be logged in to make a reservation.");
-                return;
-            }
-
-            const date = (document.getElementById("reservation-date") as HTMLInputElement).value;
-            const time = (document.getElementById("reservation-time") as HTMLInputElement).value;
-            const guests = parseInt((document.getElementById("guests") as HTMLInputElement).value);
-            const seating = (document.querySelector('input[name="seating"]:checked') as HTMLInputElement).value;
-            const table = (document.querySelector('input[name="table"]:checked') as HTMLInputElement).value;
-
-            const newReservation = new Reservation(date, time, guests, seating, table);
-            const previousReservations = Reservation.getReservations();
-            newReservation.save();
-            //TESTING
-            console.log("Reservation added:", newReservation);
-            console.log("All Reservations:", Reservation.getReservations());
-
-            const updatedReservations = Reservation.getReservations();
-            if (previousReservations.length === updatedReservations.length) {
-                return;
-            }
-            alert(`Reservation added successfully for ${loggedInUser.name}!`);
-            reservationForm.reset();
-        });
+      reservationForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+  
+        const loggedInUser = UserController.getLoggedInUser();
+        if (!loggedInUser) {
+          alert("You must be logged in to make a reservation.");
+          return;
+        }
+  
+        const date = (document.getElementById("reservation-date") as HTMLInputElement).value;
+        const time = (document.getElementById("reservation-time") as HTMLInputElement).value;
+        const guests = parseInt((document.getElementById("guests") as HTMLInputElement).value);
+        const seating = (document.querySelector('input[name="seating"]:checked') as HTMLInputElement).value;
+        const table = (document.querySelector('input[name="table"]:checked') as HTMLInputElement).value;
+  
+        const newReservation = new Reservation(date, time, guests, seating, table);
+        newReservation.save();
+        
+        // Logging for testing purposes
+        console.log("Reservation added:", newReservation);
+        console.log("All Reservations:", Reservation.getReservations());
+  
+        alert(`Reservation added successfully for ${loggedInUser.name}!`);
+        reservationForm.reset();
+        
+        // Redirect to MainPage.html after reservation
+        window.location.href = "MainPage.html";
+      });
     }
-});
-
+  });
+  
 //Logout button
 document.addEventListener("DOMContentLoaded", () => {
     const exitButton = document.getElementById("exit-btn") as HTMLButtonElement | null;
