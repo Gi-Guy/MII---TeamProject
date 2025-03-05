@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-  
+
 //Logout button
 document.addEventListener("DOMContentLoaded", () => {
     const exitButton = document.getElementById("exit-btn") as HTMLButtonElement | null;

@@ -56,6 +56,15 @@ let UserController = /** @class */ (() => {
         static logout() {
             localStorage.removeItem("loggedInUser");
         }
+        static updateUser(email, newName, isAdmin) {
+            let users = [...UserController.getUsers(), ...UserController.getAdmins()];
+            const user = users.find(user => user.email === email);
+            if (!user)
+                return;
+            user.name = newName;
+            user.isAdmin = isAdmin;
+            localStorage.setItem("users", JSON.stringify(users));
+        }
     }
     UserController.users = [];
     UserController.admins = [];

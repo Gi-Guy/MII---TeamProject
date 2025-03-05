@@ -1,62 +1,43 @@
-const users = [
-    { id: 1, name: 'Alice Johnson', email: 'alice@example.com', role: 'user', permissions: ['read'] },
-    { id: 2, name: 'Bob Smith', email: 'bob@example.com', role: 'admin', permissions: ['read', 'write'] },
-    { id: 3, name: 'Charlie Brown', email: 'charlie@example.com', role: 'user', permissions: [] },
-];
-function renderUsers() {
-    const tbody = document.querySelector("#users-table tbody");
-    if (!tbody)
-        return;
-    tbody.innerHTML = '';
-    users.forEach(user => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-        <td>${user.name}</td>
-        <td>${user.email}</td>
-        <td>
-          <select data-userid="${user.id}" class="role-select">
-            <option value="user" ${user.role === 'user' ? 'selected' : ''}>User</option>
-            <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>Admin</option>
-            <option value="moderator" ${user.role === 'moderator' ? 'selected' : ''}>Moderator</option>
-          </select>
-        </td>
-        <td>
-          <label>
-            <input type="checkbox" data-userid="${user.id}" class="perm-read" ${user.permissions.includes('read') ? 'checked' : ''}>
-            Read
-          </label>
-          <label>
-            <input type="checkbox" data-userid="${user.id}" class="perm-write" ${user.permissions.includes('write') ? 'checked' : ''}>
-            Write
-          </label>
-        </td>
-        <td>
-          <button data-userid="${user.id}" class="save-btn">Save</button>
-        </td>
-      `;
-        tbody.appendChild(tr);
-    });
-}
-document.addEventListener('DOMContentLoaded', () => {
-    renderUsers();
-    document.querySelectorAll('.save-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const userId = e.currentTarget.dataset.userid;
-            if (!userId)
-                return;
-            const roleSelect = document.querySelector(`select.role-select[data-userid="${userId}"]`);
-            const readCheckbox = document.querySelector(`input.perm-read[data-userid="${userId}"]`);
-            const writeCheckbox = document.querySelector(`input.perm-write[data-userid="${userId}"]`);
-            const user = users.find(u => u.id.toString() === userId);
-            if (user) {
-                user.role = roleSelect.value;
-                user.permissions = [];
-                if (readCheckbox.checked)
-                    user.permissions.push('read');
-                if (writeCheckbox.checked)
-                    user.permissions.push('write');
-                alert(`Updated ${user.name}:\nRole: ${user.role}\nPermissions: ${user.permissions.join(', ') || 'none'}`);
-            }
+import { UserController } from "./userController.js";
+document.addEventListener("DOMContentLoaded", () => {
+    const usersTableBody = document.querySelector("#users-table tbody");
+    function loadUsers() {
+        usersTableBody.innerHTML = "";
+        UserController.loadUsers();
+        const users = [...UserController.getUsers(), ...UserController.getAdmins()];
+        users.forEach((user) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td><input type="text" class="user-name" data-email="${user.email}" value="${user.name}" /></td>
+                <td>${user.email}</td>
+                <td>
+                    <select class="user-role" data-email="${user.email}">
+                        <option value="user" ${user.isAdmin ? "" : "selected"}>User</option>
+                        <option value="admin" ${user.isAdmin ? "selected" : ""}>Admin</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="checkbox" class="permission-toggle" data-email="${user.email}" ${user.isAdmin ? "checked" : ""}>
+                </td>
+                <td>
+                    <button class="save-user" data-email="${user.email}">Save</button>
+                </td>
+            `;
+            usersTableBody.appendChild(row);
         });
-    });
+        attachEventListeners();
+    }
+    function attachEventListeners() {
+        document.querySelectorAll(".save-user").forEach((button) => {
+            button.addEventListener("click", (event) => {
+                const email = event.target.dataset.email;
+                const name = document.querySelector(`.user-name[data-email="${email}"]`).value;
+                const role = document.querySelector(`.user-role[data-email="${email}"]`).value;
+                const isAdmin = role === "admin";
+                UserController.updateUser(email, name, isAdmin);
+                alert("User details updated successfully!");
+            });
+        });
+    }
+    loadUsers();
 });
