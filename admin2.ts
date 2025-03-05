@@ -5,9 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadUsers() {
         usersTableBody.innerHTML = "";
+
         UserController.loadUsers();
-        const users = [...UserController.getUsers(), ...UserController.getAdmins()];
+        const users = UserController.getUsers();
         
+        console.log(users);
         users.forEach((user) => {
             const row = document.createElement("tr");
           

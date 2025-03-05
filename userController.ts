@@ -78,5 +78,8 @@ export class UserController {
     
         localStorage.setItem("users", JSON.stringify(users));
     }
+    static getAllUsers(): User[] {
+        return [...UserController.getUsers(), ...UserController.getAdmins()];
+    }
     
 }
