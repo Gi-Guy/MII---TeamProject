@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Reservation page
 document.addEventListener("DOMContentLoaded", () => {
-    const reservationForm = document.getElementById("reservationForm");
+    const reservationForm = document.getElementById("reservation-form");
     if (reservationForm) {
         reservationForm.addEventListener("submit", (e) => {
             e.preventDefault();

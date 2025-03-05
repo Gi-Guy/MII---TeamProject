@@ -63,8 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Reservation page
 document.addEventListener("DOMContentLoaded", () => {
-
-    const reservationForm = document.getElementById("reservationForm") as HTMLFormElement | null;
+    const reservationForm = document.getElementById("reservation-form") as HTMLFormElement | null;
 
     if (reservationForm) {
         reservationForm.addEventListener("submit", (e) => {
@@ -93,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
 
 //Logout button
 document.addEventListener("DOMContentLoaded", () => {

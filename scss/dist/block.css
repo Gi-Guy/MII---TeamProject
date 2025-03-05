@@ -123,6 +123,7 @@ nav.admin-nav button.active {
 
 .admin-section {
   display: none;
+  margin-left: 50px;
 }
 
 .admin-section.active {
