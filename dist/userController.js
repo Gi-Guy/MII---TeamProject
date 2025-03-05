@@ -65,9 +65,6 @@ let UserController = /** @class */ (() => {
             user.isAdmin = isAdmin;
             localStorage.setItem("users", JSON.stringify(users));
         }
-        static getAllUsers() {
-            return [...UserController.getUsers(), ...UserController.getAdmins()];
-        }
     }
     UserController.users = [];
     UserController.admins = [];

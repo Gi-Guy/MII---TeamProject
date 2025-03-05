@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadUsers() {
         usersTableBody.innerHTML = "";
         UserController.loadUsers();
-        const users = UserController.getUsers();
-        console.log(users);
+        const users = [...UserController.getUsers(), ...UserController.getAdmins()];
         users.forEach((user) => {
             const row = document.createElement("tr");
             row.innerHTML = `
