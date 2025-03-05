@@ -137,6 +137,10 @@ nav a:hover {
   background: #b8952a;
 }
 
+#reservation-date {
+  background: #b8952a;
+}
+
 input,
 button {
   font-size: inherit;
