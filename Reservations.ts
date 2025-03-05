@@ -30,11 +30,28 @@ export class Reservation {
         this.userEmail = loggedInUser.email; 
     }
 
+    // save(): void {
+    //     Reservation.reservations.push(this);
+    //     Reservation.saveReservations();
+    //     console.log("✅ New reservation added:", this);
+    // }
     save(): void {
-        Reservation.reservations.push(this);
+        const reservations = Reservation.getReservations();
+        
+        const isTableTaken = reservations.some(res =>
+            res.date === this.date && res.time === this.time && res.table === this.table
+        );
+    
+        if (isTableTaken) {
+            alert("This table is already booked for the selected date and time.");
+            return;
+        }
+    
+        reservations.push(this);
         Reservation.saveReservations();
         console.log("✅ New reservation added:", this);
     }
+    
 
     static loadReservations(): Reservation[] {
         const reservationsData = localStorage.getItem(Reservation.RESERVATIONS_STORAGE_KEY);
