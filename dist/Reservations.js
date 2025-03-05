@@ -15,22 +15,24 @@ let Reservation = /** @class */ (() => {
             this.userName = loggedInUser.name;
             this.userEmail = loggedInUser.email;
         }
-        // save(): void {
-        //     Reservation.reservations.push(this);
-        //     Reservation.saveReservations();
-        //     console.log("✅ New reservation added:", this);
-        // }
         save() {
-            const reservations = Reservation.getReservations();
-            const isTableTaken = reservations.some(res => res.date === this.date && res.time === this.time && res.table === this.table);
-            if (isTableTaken) {
-                alert("This table is already booked for the selected date and time.");
-                return;
-            }
-            reservations.push(this);
+            Reservation.reservations.push(this);
             Reservation.saveReservations();
             console.log("✅ New reservation added:", this);
         }
+        // save(): void {
+        //     const reservations = Reservation.getReservations();
+        //     const isTableTaken = reservations.some(res =>
+        //         res.date === this.date && res.time === this.time && res.table === this.table
+        //     );
+        //     if (isTableTaken) {
+        //         alert("This table is already booked for the selected date and time.");
+        //         return;
+        //     }
+        //     reservations.push(this);
+        //     Reservation.saveReservations();
+        //     console.log("✅ New reservation added:", this);
+        // }
         static loadReservations() {
             const reservationsData = localStorage.getItem(Reservation.RESERVATIONS_STORAGE_KEY);
             return reservationsData ? JSON.parse(reservationsData) : [];
